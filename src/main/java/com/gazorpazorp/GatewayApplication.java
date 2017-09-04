@@ -7,10 +7,11 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @EnableZuulProxy
 @EnableEurekaClient
-@SpringBootApplication
-public class LITGatewayApplication {
+@SpringBootApplication(scanBasePackages="com.gazorpazorp")
+//@EnableFeignClients("com.gazorpazorp.client")
+public class GatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LITGatewayApplication.class, args);
+		SpringApplication.run(GatewayApplication.class, args);
 	}
 }
