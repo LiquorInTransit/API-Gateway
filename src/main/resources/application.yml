@@ -10,6 +10,7 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
 
 zuul:
+  sensitiveHeaders:
   routes:
     uaa-service:
       sensitiveHeaders:
@@ -23,7 +24,6 @@ zuul:
       sensitiveHeaders:
       path: /orders/**
       stripPrefix: true
-  add-proxy-headers: true
 
 hystrix:
   command:
@@ -37,3 +37,34 @@ hystrix:
           strategy: THREAD
           thread:
             timeoutInMilliseconds: 10000
+            
+security:
+  basic:
+    enabled: false
+  oauth2:
+    resource:
+      jwt:
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0DsrJige51wEhIDatvnq
+          zGlrb+HGZmUCB7UxxoP7m+humK6paRilkpKKXoJeiwrYz2Cx9dLG1Q0IxtOlxPU4
+          RsCjFw3N8hrmuw+R8Fn6d0wAXUFR3EjoyiNaGK++2RaTEsbzK1A1/ea6DKH1UuFB
+          +NL1BQacKtQH3mwe/7ot9uW1axKwb28cqxHBYwxIdK8gQumCrLdwd9d+ZFn6j+7z
+          9VszKolOnmkeo1bOFNGBJ2Vf4b6XQc/uukpSDmV2l2pLMQ/DVLWvU/cl9Wd7S8CQ
+          pIQiKzmnKlbvM18EVDZwb0vcXZenT5yGHZ3GHXEJDzChnRbQtQOjvUvKzPnoBzGx
+          7wIDAQAB
+          -----END PUBLIC KEY-----
+          
+management:
+  contextPath: /mgmt
+  security:
+    enabled: false
+    
+endpoints:
+  enabled: false
+  health.enabled: true
+  info.enabled: true
+  logfile.enabled: true
+  loggers.enabled: true
+  metrics.enabled: true
+  trace.enabled: true
