@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -19,6 +20,7 @@ public class CustomOAuth2FeignRequestInterceptor implements RequestInterceptor{
     public CustomOAuth2FeignRequestInterceptor(OAuth2ClientContext oAuth2ClientContext) {
         this(oAuth2ClientContext, "Bearer", "Authorization");
     }
+    
 
     public CustomOAuth2FeignRequestInterceptor(OAuth2ClientContext oAuth2ClientContext, String tokenTypeName, String headerName) {
         this.oAuth2ClientContext = oAuth2ClientContext;
@@ -28,11 +30,13 @@ public class CustomOAuth2FeignRequestInterceptor implements RequestInterceptor{
 
     @Override
     public void apply(RequestTemplate template) {
-        if ( oAuth2ClientContext.getAccessToken() == null) {
+    	System.out.println("HERES THE TOKEN: " + oAuth2ClientContext.getAccessToken().toString());
+    	String tokenString = ((OAuth2AuthenticationDetails)SecurityContextHolder.getContext().getAuthentication().getDetails()).getTokenValue();
+        if ( /*oAuth2ClientContext.getAccessToken()*/tokenString == null) {
             logger.warn("Cannot obtain existing token for request, if it is a non secured request, ignore.");
         } else {
             logger.debug("Constructing Header {} for Token {}", headerName, tokenTypeName);
-            template.header(headerName, String.format("%s %s", tokenTypeName, oAuth2ClientContext.getAccessToken().toString()));
+            template.header(headerName, String.format("%s %s", tokenTypeName, tokenString/*oAuth2ClientContext.getAccessToken().toString()*/));
         }
 
     }

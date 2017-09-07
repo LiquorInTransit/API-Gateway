@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
@@ -20,6 +21,7 @@ import com.gazorpazorp.client.config.CustomOAuth2FeignRequestInterceptor;
 @EnableFeignClients("com.gazorpazorp.client")
 @EnableOAuth2Client
 @EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class GatewayApplication {
 
 	public static void main(String[] args) {
