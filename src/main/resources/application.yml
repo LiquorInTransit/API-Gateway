@@ -24,7 +24,7 @@ zuul:
     order-service:
       sensitiveHeaders:
       path: /orders/**
-      stripPrefix: true#either make this false or remove /orders from order-service
+      stripPrefix: false
 
 hystrix:
   command:
