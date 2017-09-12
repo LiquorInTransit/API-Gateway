@@ -2,12 +2,13 @@ server:
   port: 8080
 
 eureka:
-  instance: 
-    hostname: localhost
-    port: 8761
+  instance:
+    healthCheckUrlPath: ${management.contextPath}/health
+    metadata-map:
+      management.context-path: "${management.contextPath}"
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+      defaultZone: http://ec2-13-59-80-6.us-east-2.compute.amazonaws.com:8761/eureka/
 
 zuul:
   sensitiveHeaders:
@@ -68,3 +69,20 @@ endpoints:
   loggers.enabled: true
   metrics.enabled: true
   trace.enabled: true
+  
+  
+---
+
+spring:
+  profiles: dev
+  
+eureka:
+  instance:
+    hostname: localhost
+    port: 8761
+    healthCheckUrlPath: ${management.contextPath}/health
+    metadata-map:
+      management.context-path: "${management.contextPath}"
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka
