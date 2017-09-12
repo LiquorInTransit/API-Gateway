@@ -139,7 +139,9 @@
        ip: "{{ live_ip_address }}"
        state: absent
        region: "{{ region }}"
-    when: old_green is defined and old_green.instances[0].id is defined
+    when: 
+      - old_green.instances[0] is defined
+      - old_green.instances[0].id is defined
 
   - name: Allocate the EIP to the new instance
     ec2_eip:
