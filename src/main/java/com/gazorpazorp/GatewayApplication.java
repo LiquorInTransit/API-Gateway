@@ -9,6 +9,7 @@ import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -40,7 +41,21 @@ public class GatewayApplication {
 	@Bean
 	public EurekaInstanceConfigBean eurekaInstanceConfigBean(InetUtils utils) 
 	{
-		EurekaInstanceConfigBean instance = new EurekaInstanceConfigBean(utils);
+//		EurekaInstanceConfigBean instance = new EurekaInstanceConfigBean(utils);
+		final EurekaInstanceConfigBean instance = new EurekaInstanceConfigBean(utils)
+		{
+			@Scheduled(initialDelay = 30000L, fixedRate = 30000L)
+			public void refreshInfo() {
+				AmazonInfo newInfo = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
+				if (!this.getDataCenterInfo().equals(newInfo)) {
+					((AmazonInfo) this.getDataCenterInfo()).setMetadata(newInfo.getMetadata());
+					this.setHostname(newInfo.get(AmazonInfo.MetaDataKey.publicHostname));
+					this.setIpAddress(newInfo.get(AmazonInfo.MetaDataKey.publicIpv4));
+					this.setDataCenterInfo(newInfo);
+					this.setNonSecurePort(8080);
+				}
+			}         
+		};
 		AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
 		instance.setHostname(info.get(AmazonInfo.MetaDataKey.publicHostname));
 		instance.setIpAddress(info.get(AmazonInfo.MetaDataKey.publicIpv4));
