@@ -113,14 +113,16 @@
             port: 8080
             state: started
 #Once the server is responding, install nGinx and configure proxy
-  - name: make sure apt-add-repository is installed
-    apt: pkg=python-software-properties state=present #software-properties-common for Ubuntu 12.10 and later
-  - name: add nginx apt repo
-    apt_repository: repo='ppa:nginx/development' #want version 1.5 for websocket support
-  - name: update apt
-    apt: update_cache=yes
-  - name: install nginx
-    apt: pkg=nginx state=latest
+  - name: Add the Nginx Repository
+    yum:
+       name: epel-release
+       state: latest
+    become: true
+  - name: Install Nginx
+    yum:
+       name: nginx
+       state: latest
+    become: true
   - name: copy template
     copy:
       src: service.conf.j2
