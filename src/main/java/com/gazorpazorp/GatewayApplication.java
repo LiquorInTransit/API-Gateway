@@ -8,12 +8,16 @@ import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 import com.gazorpazorp.client.config.CustomOAuth2FeignRequestInterceptor;
 import com.netflix.appinfo.AmazonInfo;
@@ -62,5 +66,31 @@ public class GatewayApplication {
 		instance.setDataCenterInfo(info);
 		instance.setNonSecurePort(8080);
 		return instance;
+	}
+	
+	
+	
+	
+	
+	
+	@Configuration
+	protected static class ResourceConfig extends ResourceServerConfigurerAdapter {
+
+		@Override
+		public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+			// TODO Auto-generated method stub
+			super.configure(resources);
+		}
+
+		@Override
+		public void configure(HttpSecurity http) throws Exception {
+			// TODO Auto-generated method stub
+			
+			http.authorizeRequests().antMatchers("/api/**").fullyAuthenticated();
+			http.authorizeRequests().antMatchers("/**").permitAll();
+			
+			super.configure(http);
+		}
+		
 	}
 }
