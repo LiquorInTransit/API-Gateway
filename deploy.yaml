@@ -128,7 +128,7 @@
   - name: copy template
     template:
       src: service.conf.j2
-      dest: /etc/nginx/conf.d/
+      dest: /etc/nginx/conf.d/webapp.conf
       mode: 0700
     become: true
 #  - name: make site available
