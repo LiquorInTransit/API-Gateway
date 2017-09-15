@@ -1,0 +1,4 @@
+---
+service: localhost
+service_domain: localhost
+service_port: 8080
