@@ -30,7 +30,6 @@ public class CustomOAuth2FeignRequestInterceptor implements RequestInterceptor{
 
     @Override
     public void apply(RequestTemplate template) {
-    	System.out.println("HERES THE TOKEN: " + oAuth2ClientContext.getAccessToken().toString());
     	String tokenString = ((OAuth2AuthenticationDetails)SecurityContextHolder.getContext().getAuthentication().getDetails()).getTokenValue();
         if ( /*oAuth2ClientContext.getAccessToken()*/tokenString == null) {
             logger.warn("Cannot obtain existing token for request, if it is a non secured request, ignore.");
