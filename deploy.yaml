@@ -126,7 +126,7 @@
   - name: copy template
     copy:
       src: service.conf.j2
-      dest: /etc/nginx/sites-available/{{ service }}
+      dest: /etc/nginx/conf.d/
       mode: 0700
     become: true
   - name: make site available
