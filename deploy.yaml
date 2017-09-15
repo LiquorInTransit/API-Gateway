@@ -129,11 +129,11 @@
       dest: /etc/nginx/conf.d/
       mode: 0700
     become: true
-  - name: make site available
-    file: 
-      src: /etc/nginx/sites-available/{{ service }} 
-      dest: /etc/nginx/sites-enabled/{{ service }}
-      state: link
+ # - name: make site available
+ #   file: 
+ #     src: /etc/nginx/sites-available/{{ service }} 
+ #     dest: /etc/nginx/sites-enabled/{{ service }}
+ #     state: link
   - name: restart nginx
     service: 
       name: nginx
