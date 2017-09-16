@@ -123,19 +123,22 @@
        name: nginx
        state: latest
     become: true
-  - name: Create sites-available and sites-enabled folders
+  - name: Create sites-available folder
     file:
-      path: /etc/nginx/{{item.0}}
+      path: /etc/nginx/sites-available
       state: directory
-      with_nested:
-        - ['sites-available']
-        - ['sites-enabled']
+    become: true
+  - name: Create sites-enabled folder
+    file:
+      path: /etc/nginx/sites-enabled
+      state: directory
     become: true
   - name: Edit NGinx config to look for files in sites-folders
     lineinfile:
       path: /etc/nginx/nginx.conf
       insertafter: '^http {'
-      line: 'include /etc/nginx/sites-enabled/*'     
+      line: 'include /etc/nginx/sites-enabled/*'
+    become: true    
   - name: copy template
     template:
       src: service.conf.j2
