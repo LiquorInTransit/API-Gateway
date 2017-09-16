@@ -130,7 +130,12 @@
       with_nested:
         - ['sites-available']
         - ['sites-enabled']
-    become: true    
+    become: true
+  - name: Edit NGinx config to look for files in sites-folders
+    lineinfile:
+      path: /etc/nginx/nginx.conf
+      insertafter: '^http {'
+      line: 'include /etc/nginx/sites-enabled/*'     
   - name: copy template
     template:
       src: service.conf.j2
