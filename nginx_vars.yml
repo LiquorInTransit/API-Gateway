@@ -1,4 +1,4 @@
 ---
-service: localhost
-service_domain: localhost
+service: gateway
+service_domain: liquorintransit.com
 service_port: 8080

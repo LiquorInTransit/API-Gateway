@@ -7,20 +7,24 @@ server {
 	server_name {{ service_domain }};
 	access_log /var/log/nginx/{{ service }}.log;
 
-	error_page 400 404 500 502 503 504 /50x.html;
-        location  /50x.html {
-                internal;
-                root /usr/share/nginx/www;
-        }
+#	error_page 400 404 500 502 503 504 /50x.html;
+#        location  /50x.html {
+#                internal;
+#                root /usr/share/nginx/www;
+#        }
 
   location / {
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header Host $http_host;
-		proxy_set_header X-NginX-Proxy true;
+#		proxy_set_header X-Real-IP $remote_addr;
+#		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#		proxy_set_header Host $http_host;
+#		proxy_set_header X-NginX-Proxy true;
 
-		proxy_pass http://{{ service }}:{{ service_port }}/;
-		proxy_redirect off;
+		proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+		proxy_pass http://localhost:8080/;
+#		proxy_redirect off;
     
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
