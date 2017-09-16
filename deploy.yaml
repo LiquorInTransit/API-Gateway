@@ -153,7 +153,7 @@
   - name: make site available
     file: 
       src: /etc/nginx/sites-available/{{ service }} 
-      dest: /etc/nginx/sites-enabled/default
+      dest: /etc/nginx/sites-enabled/default.conf
       state: link
   - name: restart nginx
     service: 
