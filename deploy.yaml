@@ -36,6 +36,11 @@
              from_port: 22
              to_port: 22
              cidr_ip: 0.0.0.0/0
+             
+           - proto: tcp
+             from_port: 80
+             to_port: 80
+             cidr_ip: 0.0.0.0/0
 
     - name: Provision an instance
       ec2:
@@ -137,7 +142,7 @@
     lineinfile:
       path: /etc/nginx/nginx.conf
       insertafter: '^http {'
-      line: 'include /etc/nginx/sites-enabled/*'
+      line: 'include /etc/nginx/sites-enabled/*;'
     become: true    
   - name: copy template
     template:
