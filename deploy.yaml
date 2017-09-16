@@ -67,7 +67,7 @@
 - hosts: tag_Deploy_Blue, ec2hosts
   sudo: yes
   vars_files:
-    - nginx_vars.yml
+    - NGINXConfig/nginx_vars.yml
   tasks:
   - name: upgrade all packages
     yum: name=* state=latest
@@ -134,13 +134,13 @@
     become: true
   - name: Replace NGinx config with local config file
     copy:
-      src: nginx.conf
+      src: NGINXConfig/nginx.conf
       dest: /etc/nginx/
       mode: 0700
     become: true    
   - name: copy template
     template:
-      src: service.conf.j2
+      src: NGINXConfig/service.conf.j2
       dest: /etc/nginx/sites-available/{{service}}
       mode: 0700
     become: true
