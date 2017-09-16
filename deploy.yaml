@@ -217,22 +217,3 @@
        tags:
           Deploy: Blue
        state: absent
-  - name: Reset the security group
-    ec2_group:
-      name: http-gateway-server
-      description: Security rules for HTTP Server
-      region: "{{ region }}"
-      rules_egress:
-        - proto: tcp
-          ports: 0-65535
-          cidr_ip: 0.0.0.0/0
-      rules:
-        - proto: tcp
-          ports: 8080
-          cidr_ip: 172.31.0.0/16
-     
-        - proto: tcp
-          ports:
-            - 80
-            - 22
-          cidr_ip: 0.0.0.0/0
