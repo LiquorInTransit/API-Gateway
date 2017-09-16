@@ -123,19 +123,25 @@
        name: nginx
        state: latest
     become: true
-#  - name: Create sites-available and sites-enabled folders
-    
+  - name: Create sites-available and sites-enabled folders
+    file:
+      path: /etc/nginx/{{item.0}}
+      state: directory
+      with_nested:
+        - ['sites-available']
+        - ['sites-enabled']
+    become: true    
   - name: copy template
     template:
       src: service.conf.j2
-      dest: /etc/nginx/conf.d/webapp.conf
+      dest: /etc/nginx/sites-available/{{service}}
       mode: 0700
     become: true
-#  - name: make site available
-#    file: 
-#      src: /etc/nginx/sites-available/{{ service }} 
-#      dest: /etc/nginx/sites-enabled/{{ service }}
-#      state: link
+  - name: make site available
+    file: 
+      src: /etc/nginx/sites-available/{{ service }} 
+      dest: /etc/nginx/sites-enabled/{{ service }}
+      state: link
   - name: restart nginx
     service: 
       name: nginx
