@@ -14,9 +14,4 @@ node {
          ansiblePlaybook credentialsId: 'ssh-credentials', installation: 'ansible-installation', playbook: 'deploy.yaml', sudoUser: null
       }      
    }
-   stage('TriggerAdminMonitorBuild') {
-   		if (env.BRANCH_NAME == 'master') {
-		    build job: '../AdminMonitorService/master', wait: false
-		}
-   }
 }
