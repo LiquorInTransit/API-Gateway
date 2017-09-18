@@ -3,7 +3,7 @@ upstream gateway {
 }
 
 server {
-	listen 80 www.liquorintransit.party;
+	listen 80;
 	server_name www.liquorintransit.party;
 	access_log /var/log/nginx/{{ service }}.log;
 
