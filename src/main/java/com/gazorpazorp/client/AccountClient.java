@@ -1,6 +1,7 @@
 package com.gazorpazorp.client;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.gazorpazorp.model.Customer;
@@ -10,7 +11,7 @@ import com.gazorpazorp.model.Driver;
 public interface AccountClient {
 	
 	@GetMapping(value="/me", consumes = "application/json")
-	Customer getCustomer();
+	ResponseEntity<Customer> getCustomer();
 
 	@GetMapping(value="/drivers/me", consumes = "application/json")
 	Driver getDriver();

@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gazorpazorp.client.UserClient;
 import com.gazorpazorp.dto.CustomerDetailsDto;
 import com.gazorpazorp.dto.DriverDetailsDto;
 import com.gazorpazorp.service.MeService;
@@ -27,7 +30,8 @@ public class MeController {
 		return Optional.ofNullable(meService.getCustomer())
 				.map(c -> new ResponseEntity<CustomerDetailsDto>(c, HttpStatus.OK))
 				.orElseThrow(() -> new Exception("An error occured"));
-	}
+	}	
+	
 	@GetMapping("/drivers/me")
 	@PreAuthorize("#oauth2.hasScope('driver')")
 	public ResponseEntity<DriverDetailsDto> driverMe () throws Exception {

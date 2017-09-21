@@ -20,12 +20,10 @@ public class MeService {
 	UserClient userClient;
 
 	public CustomerDetailsDto getCustomer() {
-//		return accountClient.getCustomer();
-		return CustomerMapper.INSTANCE.customerAndUserToCustomerDetailsDto(accountClient.getCustomer(), userClient.getUser());
+		return CustomerMapper.INSTANCE.customerAndUserToCustomerDetailsDto(accountClient.getCustomer().getBody(), userClient.getUser());
 	}
 	
 	public DriverDetailsDto getDriver() {
-//		return accountClient.getDriver();
-		return DriverMapper.INSTANCE.customerAndUserToCustomerDetailsDto(accountClient.getDriver(), userClient.getUser());
+		return DriverMapper.INSTANCE.driverAndUserToDriverDetailsDto(accountClient.getDriver(), userClient.getUser());
 	}
 }
