@@ -4,7 +4,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class User {
 	private Long id;
-	private String username;
 	private String password;
 	
 	private String firstName;
@@ -13,8 +12,8 @@ public class User {
 	
 	public User() {}
 	
-	public User(String username, String password) {
-		this.username = username;
+	public User(String email, String password) {
+		this.email = email;
 		this.password = password;
 	}
 	
@@ -25,12 +24,6 @@ public class User {
 		this.id = id;
 	}	
 
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	public String getPassword() {
 		return password;
@@ -62,7 +55,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", password=" + password + "]";
 	}
 
 

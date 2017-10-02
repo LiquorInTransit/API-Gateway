@@ -4,7 +4,6 @@ public class DriverDetailsDto {
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private String username;
 	private String email;
 	private String car;
 	
@@ -26,12 +25,6 @@ public class DriverDetailsDto {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	public String getUserName() {
-		return username;
-	}
-	public void setUserName(String username) {
-		this.username = username;
 	}
 	public String getEmail() {
 		return email;
