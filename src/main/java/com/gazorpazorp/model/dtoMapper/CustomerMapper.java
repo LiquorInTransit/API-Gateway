@@ -16,7 +16,6 @@ public interface CustomerMapper {
 	@Mapping(source="customer.id", target="id")
 	@Mapping(target="firstName")
 	@Mapping(target="lastName")
-	@Mapping(target="username")
 	@Mapping(target="email")
 	@Mapping(target="address")
 	@Mapping(target="paymentMethod")
@@ -26,7 +25,6 @@ public interface CustomerMapper {
 	@Mapping(target="firstName")
 	@Mapping(target="lastName")
 	@Mapping(target="email")
-	@Mapping(target="username")
 	User customerDetailsDtoToUser(CustomerDetailsDto dto, Long userId);
 	
 	@Mapping(source="dto.id", target="id")
