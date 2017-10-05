@@ -1,13 +1,18 @@
 package com.gazorpazorp.dto;
 
+import javax.persistence.Embedded;
+
+import com.gazorpazorp.model.Location;
+
 public class CustomerDetailsDto {
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String address;
-	private String paymentMethod;
+	private String phone;
 	
+	@Embedded
+	private Location location;
 	
 	public Long getId() {
 		return id;
@@ -33,21 +38,30 @@ public class CustomerDetailsDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
+//	public String getAddress() {
+//		return address;
+//	}
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
+//	public String getPaymentMethod() {
+//		return paymentMethod;
+//	}
+//	public void setPaymentMethod(String paymentMethod) {
+//		this.paymentMethod = paymentMethod;
+//	}
+	public String getPhone() {
+		return phone;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getPaymentMethod() {
-		return paymentMethod;
+	public Location getLocation() {
+		return location;
 	}
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
-	@Override
-	public String toString() {
-		return "CustomerDetailDto [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", address=" + address + ", paymentMethod=" + paymentMethod + "]";
-	}
+
+	
 }

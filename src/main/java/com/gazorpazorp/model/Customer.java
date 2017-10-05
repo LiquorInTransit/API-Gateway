@@ -1,11 +1,15 @@
 package com.gazorpazorp.model;
 
+import javax.persistence.Embedded;
+
 public class Customer {
 
 	private Long id;
 	private Long userId;
-	private String address;
 	private String paymentMethod;
+	
+	@Embedded
+	private Location location;
 	
 	public Customer() {}
 	
@@ -30,18 +34,26 @@ public class Customer {
 		this.userId = userId;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+//	public String getAddress() {
+//		return address;
+//	}
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
 
 	public String getPaymentMethod() {
 		return paymentMethod;
 	}
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+
+
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 	
 	

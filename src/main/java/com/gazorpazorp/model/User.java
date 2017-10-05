@@ -6,6 +6,7 @@ public class User {
 	private Long id;
 	private String password;
 	
+	private String phone;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -51,6 +52,14 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	@Override
