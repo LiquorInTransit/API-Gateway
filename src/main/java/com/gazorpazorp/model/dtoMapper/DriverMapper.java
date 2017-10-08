@@ -19,6 +19,7 @@ public interface DriverMapper {
 	@Mapping(target="firstName")
 	@Mapping(target="lastName")
 	@Mapping(target="email")
+	@Mapping(target="phone")
 	@Mapping(target="car")
 	DriverDetailsDto driverAndUserToDriverDetailsDto(Driver driver, User user);
 	
@@ -26,6 +27,7 @@ public interface DriverMapper {
 	@Mapping(target="firstName")
 	@Mapping(target="lastName")
 	@Mapping(target="email")
+	@Mapping(target="phone")
 	User driverDetailsDtoToUser(DriverDetailsDto dto, Long userId);
 	
 	@Mapping(source="dto.id", target="id")
