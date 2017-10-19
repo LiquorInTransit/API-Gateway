@@ -13,6 +13,7 @@ public class CustomerDetailsDto {
 	
 	@Embedded
 	private Location location;
+	private String profileImageId;
 	
 	public Long getId() {
 		return id;
@@ -62,6 +63,13 @@ public class CustomerDetailsDto {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
+	public String getProfileImageId() {
+		return profileImageId;
+	}
+	public void setProfileImageId(String profileImageId) {
+		this.profileImageId = profileImageId;
+	}
+	
 
 	
 }

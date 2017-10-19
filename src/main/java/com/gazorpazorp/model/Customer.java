@@ -10,6 +10,7 @@ public class Customer {
 	
 	@Embedded
 	private Location location;
+	private String profileImageId;
 	
 	public Customer() {}
 	
@@ -55,6 +56,11 @@ public class Customer {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	
-	
+
+	public String getProfileImageId() {
+		return profileImageId;
+	}
+	public void setProfileImageId(String profileImageId) {
+		this.profileImageId = profileImageId;
+	}
 }
