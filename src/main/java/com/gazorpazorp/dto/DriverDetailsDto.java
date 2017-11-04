@@ -8,6 +8,8 @@ public class DriverDetailsDto {
 	private String phone;
 	private String car;
 	
+	private String profileImageUrl;
+	
 	
 	public Long getId() {
 		return id;
@@ -44,6 +46,12 @@ public class DriverDetailsDto {
 	}
 	public void setCar(String car) {
 		this.car = car;
+	}
+	public String getProfileImageUrl() {
+		return profileImageUrl;
+	}
+	public void setProfileImageUrl(String profileImageUrl) {
+		this.profileImageUrl = profileImageUrl;
 	}
 	@Override
 	public String toString() {

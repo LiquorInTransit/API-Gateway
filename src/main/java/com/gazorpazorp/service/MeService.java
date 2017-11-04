@@ -33,6 +33,12 @@ public class MeService {
 	}
 	
 	public DriverDetailsDto getDriver() {
-		return DriverMapper.INSTANCE.driverAndUserToDriverDetailsDto(accountClient.getDriver(), userClient.getUser());
+		DriverDetailsDto dto = DriverMapper.INSTANCE.driverAndUserToDriverDetailsDto(accountClient.getDriver(), userClient.getUser());
+		String imageUrl = dto.getProfileImageUrl();
+		if (imageUrl == null || imageUrl.isEmpty())
+			dto.setProfileImageUrl(IMGUR_URL+IMGUR_DEFAULT_IMAGE);
+		else
+			dto.setProfileImageUrl(IMGUR_URL+dto.getProfileImageUrl()+".jpg");
+		return dto;
 	}
 }

@@ -21,6 +21,7 @@ public interface DriverMapper {
 	@Mapping(target="email")
 	@Mapping(target="phone")
 	@Mapping(target="car")
+	@Mapping(source="driver.profileImageId", target="profileImageUrl")
 	DriverDetailsDto driverAndUserToDriverDetailsDto(Driver driver, User user);
 	
 	@Mapping(source="userId", target="id")
