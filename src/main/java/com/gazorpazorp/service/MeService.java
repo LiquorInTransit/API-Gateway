@@ -20,10 +20,15 @@ public class MeService {
 	UserClient userClient;
 	
 	private final String IMGUR_URL = "https://i.imgur.com/";
+	private final String IMGUR_DEFAULT_IMAGE = "qrgVCAy.jpg";
 
 	public CustomerDetailsDto getCustomer() {
 		CustomerDetailsDto dto = CustomerMapper.INSTANCE.customerAndUserToCustomerDetailsDto(accountClient.getCustomer().getBody(), userClient.getUser());
-		dto.setProfileImageUrl(IMGUR_URL+dto.getProfileImageUrl()+".jpg");
+		String imageUrl = dto.getProfileImageUrl();
+		if (imageUrl == null || imageUrl.isEmpty())
+			dto.setProfileImageUrl(IMGUR_URL+IMGUR_DEFAULT_IMAGE);
+		else
+			dto.setProfileImageUrl(IMGUR_URL+dto.getProfileImageUrl()+".jpg");
 		return dto;
 	}
 	
