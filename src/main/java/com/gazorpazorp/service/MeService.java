@@ -18,9 +18,13 @@ public class MeService {
 	
 	@Autowired
 	UserClient userClient;
+	
+	private final String IMGUR_URL = "https://i.imgur.com/";
 
 	public CustomerDetailsDto getCustomer() {
-		return CustomerMapper.INSTANCE.customerAndUserToCustomerDetailsDto(accountClient.getCustomer().getBody(), userClient.getUser());
+		CustomerDetailsDto dto = CustomerMapper.INSTANCE.customerAndUserToCustomerDetailsDto(accountClient.getCustomer().getBody(), userClient.getUser());
+		dto.setProfileImageUrl(IMGUR_URL+dto.getProfileImageUrl()+".jpg");
+		return dto;
 	}
 	
 	public DriverDetailsDto getDriver() {

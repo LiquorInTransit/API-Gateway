@@ -18,6 +18,7 @@ public interface CustomerMapper {
 	@Mapping(target="lastName")
 	@Mapping(target="email")
 	@Mapping(target="phone")
+	@Mapping(source="customer.profileImageId", target="profileImageUrl")
 	CustomerDetailsDto customerAndUserToCustomerDetailsDto(Customer customer, User user);
 	
 	@Mapping(source="userId", target="id")

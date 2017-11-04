@@ -11,9 +11,9 @@ public class CustomerDetailsDto {
 	private String email;
 	private String phone;
 	
-	@Embedded
+	//@Embedded
 	private Location location;
-	private String profileImageId;
+	private String profileImageUrl;
 	
 	public Long getId() {
 		return id;
@@ -63,11 +63,11 @@ public class CustomerDetailsDto {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	public String getProfileImageId() {
-		return profileImageId;
+	public String getProfileImageUrl() {
+		return profileImageUrl;
 	}
-	public void setProfileImageId(String profileImageId) {
-		this.profileImageId = profileImageId;
+	public void setProfileImageUrl(String profileImageUrl) {
+		this.profileImageUrl = profileImageUrl;
 	}
 	
 

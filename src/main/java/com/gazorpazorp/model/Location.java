@@ -2,7 +2,7 @@ package com.gazorpazorp.model;
 
 import javax.persistence.Embeddable;
 
-@Embeddable
+//@Embeddable
 public class Location {
 	private Double latitude;
 	private Double longitude;	
