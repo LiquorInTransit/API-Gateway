@@ -1,12 +1,14 @@
 package com.gazorpazorp.dto;
 
+import com.gazorpazorp.model.Driver.Car;
+
 public class DriverDetailsDto {
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phone;
-	private String car;
+	private Car car;
 	
 	private String profileImageUrl;
 	
@@ -41,10 +43,10 @@ public class DriverDetailsDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getCar() {
+	public Car getCar() {
 		return car;
 	}
-	public void setCar(String car) {
+	public void setCar(Car car) {
 		this.car = car;
 	}
 	public String getProfileImageUrl() {

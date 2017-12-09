@@ -4,7 +4,7 @@ public class Driver {
 
 	private Long id;
 	private Long userId;
-	private String car;
+	private Car car;
 	
 	private String profileImageId;
 	
@@ -29,10 +29,10 @@ public class Driver {
 		this.userId = userId;
 	}
 
-	public String getCar() {
+	public Car getCar() {
 		return car;
 	}
-	public void setCar(String car) {
+	public void setCar(Car car) {
 		this.car = car;
 	}
 	public String getProfileImageId() {
@@ -42,5 +42,49 @@ public class Driver {
 		this.profileImageId = profileImageId;
 	}
 	
+	public static class Car {		
+		private String make;
+		private String model;
+		private String year;
+		private String colour;
+		private String plate;
+		
+		public Car() {}
+
+		public String getMake() {
+			return make;
+		}
+		public void setMake(String make) {
+			this.make = make;
+		}
+
+		public String getModel() {
+			return model;
+		}
+		public void setModel(String model) {
+			this.model = model;
+		}
+
+		public String getYear() {
+			return year;
+		}
+		public void setYear(String year) {
+			this.year = year;
+		}
+
+		public String getColour() {
+			return colour;
+		}
+		public void setColour(String colour) {
+			this.colour = colour;
+		}
+
+		public String getPlate() {
+			return plate;
+		}
+		public void setPlate(String plate) {
+			this.plate = plate;
+		}		
+	}
 	
 }
