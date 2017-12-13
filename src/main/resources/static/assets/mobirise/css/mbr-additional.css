@@ -1338,15 +1338,17 @@ body {
   min-height: 100vh;
 }
 .cid-qA3HsxHqSp {
-  background-image: url("../../../assets/images/background1.jpg");
+  background-image: url("https://cdn.stocksnap.io/img-thumbs/960w/SBQGCXR4AS.jpg");
 }
 .cid-qA3HsxHqSp h1 {
-  color: #616161;
+  color: #FFFFFF;
+  -webkit-text-stroke: 1.0px #000000;
 }
 .cid-qA3HsxHqSp h2,
 .cid-qA3HsxHqSp h3,
 .cid-qA3HsxHqSp p {
-  color: #767676;
+  color: #FFFFFF;
+  -webkit-text-stroke: 1.0px #000000;
 }
 .cid-qA3HsxHqSp .mbr-section-subtitle {
   font-style: italic;
