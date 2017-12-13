@@ -23,7 +23,7 @@ import com.gazorpazorp.client.config.CustomOAuth2FeignRequestInterceptor;
 import com.netflix.appinfo.AmazonInfo;
 
 @EnableZuulProxy
-//@EnableEurekaClient
+@EnableEurekaClient
 @SpringBootApplication(scanBasePackages="com.gazorpazorp")
 @EnableFeignClients("com.gazorpazorp.client")
 @EnableOAuth2Client
