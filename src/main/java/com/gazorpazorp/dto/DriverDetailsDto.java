@@ -4,6 +4,7 @@ import com.gazorpazorp.model.Driver.Car;
 
 public class DriverDetailsDto {
 	private Long id;
+	private String stripeId;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -54,6 +55,13 @@ public class DriverDetailsDto {
 	}
 	public void setProfileImageUrl(String profileImageUrl) {
 		this.profileImageUrl = profileImageUrl;
+	}
+	
+	public String getStripeId() {
+		return stripeId;
+	}
+	public void setStripeId(String stripeId) {
+		this.stripeId = stripeId;
 	}
 	@Override
 	public String toString() {

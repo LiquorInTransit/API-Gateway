@@ -16,6 +16,7 @@ public interface DriverMapper {
 	DriverMapper INSTANCE = Mappers.getMapper(DriverMapper.class);
 	
 	@Mapping(source="driver.id", target="id")
+	@Mapping(source="driver.stripeId", target="stripeId")
 	@Mapping(target="firstName")
 	@Mapping(target="lastName")
 	@Mapping(target="email")

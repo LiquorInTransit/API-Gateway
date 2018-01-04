@@ -4,6 +4,7 @@ public class Driver {
 
 	private Long id;
 	private Long userId;
+	private String stripeId;
 	private Car car;
 	
 	private String profileImageId;
@@ -42,6 +43,13 @@ public class Driver {
 		this.profileImageId = profileImageId;
 	}
 	
+	public String getStripeId() {
+		return stripeId;
+	}
+	public void setStripeId(String stripeId) {
+		this.stripeId = stripeId;
+	}
+
 	public static class Car {		
 		private String make;
 		private String model;
